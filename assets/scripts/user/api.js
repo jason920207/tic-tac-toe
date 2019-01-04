@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:13:04-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-03T21:50:48-05:00
+ * @Last modified time: 2019-01-04T11:49:33-05:00
  */
 const store = require('../store')
 
@@ -32,8 +32,21 @@ const signout = () => {
   })
 }
 
+const changepassword = (data) => {
+  return $.ajax({
+    url: 'https://tic-tac-toe-wdi.herokuapp.com/change-password',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
+
 module.exports = {
   signup,
   signin,
-  signout
+  signout,
+  changepassword
 }

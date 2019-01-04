@@ -32,6 +32,8 @@
       <div class="container">
         <div class='row'>
           <div class='col-md-3'>
+          <!--              User Manage -->
+
             <button type="button" id="SignUpButton"class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#exampleModalLong">
               Sign Up
             </button>
@@ -87,12 +89,12 @@
                     <form id="sign-in">
                       <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail2" name="credentials[email]" aria-describedby="emailHelp" placeholder="Enter email">
+                        <input type="email" class="form-control" id="exampleInputEmail2" name="credentials[email]" value="aaa@gmail.com" aria-describedby="emailHelp" placeholder="Enter email">
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                       </div>
                       <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2" name="credentials[password]" placeholder="Password">
+                        <input type="password" class="form-control" id="exampleInputPassword2" name="credentials[password]" value="aaa" placeholder="Password">
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
@@ -102,25 +104,168 @@
               </div>
             </div>
             <button id='sign-out' class="btn btn-primary mr-sm-2">Sign Out</button>
+            <button type="button" id="ChangePassword" class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#ModalChangePassword">
+              Change Password
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="ModalChangePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="change-password">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Old Password</label>
+                        <input type="password" class="form-control" id="ChangePassword1" name="passwords[old]" aria-describedby="emailHelp" placeholder="Enter email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">New Password</label>
+                        <input type="password" class="form-control" id="ChangePassword2" name="passwords[new]" placeholder="Password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer"></div>
+                </div>
+              </div>
+            </div>
+            <div id="User1"></div>
           </div>
-          <div class='col-md-6' id="position">
+          <div class='col-md-6' id="checkbox">
+            <div class="score">Score:</div>
+            <div class="row">
+              <button id="Getgame"  class="btn btn-secondary">Getgame</button>
+              <button id="CreateGame" class="btn btn-secondary">Create</button>
+              <button id="Showgame" class="btn btn-secondary">Show</button>
+            </div>
             <div class="row" id="row1">
-              <div class="col-4 square" id="1">1</div>
-              <div class="col-4 square" id="2">2</div>
-              <div class="col-4 square" id="3">3</div>
+              <div class="col-4 square" id="0">1</div>
+              <div class="col-4 square" id="1">2</div>
+              <div class="col-4 square" id="2">3</div>
             </div>
             <div class="row" id="row2">
-              <div class="col-4 square" id="4">4</div>
-              <div class="col-4 square" id="5">5</div>
-              <div class="col-4 square" id="6">6</div>
+              <div class="col-4 square" id="3">4</div>
+              <div class="col-4 square" id="4">5</div>
+              <div class="col-4 square" id="5">6</div>
             </div>
             <div class="row" id="row3">
-              <div class="col-4 square" id="7">7</div>
-              <div class="col-4 square" id="8">8</div>
-              <div class="col-4 square" id="9">9</div>
+              <div class="col-4 square" id="6">7</div>
+              <div class="col-4 square" id="7">8</div>
+              <div class="col-4 square" id="8">9</div>
             </div>
           </div>
-          <div class='col-md-3'></div>
+          <div class='col-md-3 '>
+
+            <!-- User2 -->
+            <button type="button" id="SignUpButton"class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#exampleModalLong">
+              Sign Up
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sign Up</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="sign-up">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="credentials[email]" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="credentials[password]" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPasswordcomfirm1">Password Confirmation</label>
+                        <input type="password" class="form-control" id="exampleInputPasswordconfirm1" name="credentials[password_confirmation]"placeholder="Password Confirmation">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer"></div>
+                </div>
+              </div>
+            </div>
+
+            <button type="button" id="SignInButton"class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#exampleModalLong1">
+              Sign In
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="sign-in">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail2" name="credentials[email]" value="aaa@gmail.com" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" name="credentials[password]" value="aaa" placeholder="Password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer"></div>
+                </div>
+              </div>
+            </div>
+            <button id='sign-out' class="btn btn-primary mr-sm-2">Sign Out</button>
+            <button type="button" id="ChangePassword" class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#ModalChangePassword">
+              Change Password
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="ModalChangePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form id="change-password">
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Old Password</label>
+                        <input type="password" class="form-control" id="ChangePassword1" name="passwords[old]" aria-describedby="emailHelp" placeholder="Enter email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">New Password</label>
+                        <input type="password" class="form-control" id="ChangePassword2" name="passwords[new]" placeholder="Password">
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer"></div>
+                </div>
+              </div>
+            </div>
+            <div id="User1"></div>
+          </div>
         </div>
       </div>
     </body>
