@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T09:18:51-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-04T16:19:29-05:00
+ * @Last modified time: 2019-01-05T07:32:00-05:00
  */
 
 'use strict'
@@ -14,11 +14,12 @@
 // require('./example')
 const Userevents = require('./user/events')
 const Gameevents = require('./game/events')
+const User2events = require('./user2/events')
 const Control = require('./control/control')
 
 $(() => {
   // your JS code goes here
-  //User
+  //User1
   $('#sign-up').on('submit', Userevents.onSignUp)
   $('#sign-in').on('submit', Userevents.onSignIn)
   $('#sign-out').on('click', Userevents.onSignOut)
@@ -29,4 +30,10 @@ $(() => {
   $('#CreateGame').on('click', Gameevents.onCreateGame)
   $('#Showgame').on('click', Gameevents.onShowGame)
   $('.square').one('click', Gameevents.onUpdate)
+
+  //User2
+  $('#User2-Signin').on('submit', User2events.onSignIn)
+  $('#User2-Signout').on('click', User2events.onSignOut)
+  $('#Join').on('click', User2events.onJoin)
+
 })

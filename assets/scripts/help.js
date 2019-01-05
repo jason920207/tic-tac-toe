@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T08:51:48-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-04T11:45:23-05:00
+ * @Last modified time: 2019-01-05T07:28:35-05:00
  */
 // hide sign up/ sign in botton when sign in
 const onSignIn = () => {
@@ -11,6 +11,7 @@ const onSignIn = () => {
   $('#sign-out').css('display', 'block')
   $('#ChangePassword').css('display', 'block')
   $('#checkbox').css('display', 'block')
+  $('#User2').css('display', 'block')
 }
 
 const onSignOut = () => {
@@ -19,9 +20,24 @@ const onSignOut = () => {
   $('#sign-out').css('display', 'none')
   $('#ChangePassword').css('display', 'none')
   $('#checkbox').css('display', 'none')
+  $('#User2').css('display', 'none')
+}
+
+const User2SignIn = () => {
+  $('#SignInButton2').css('display', 'none')
+  $('#User2-Signout').css('display', 'block')
+  $('#Join').css('display', 'block')
+}
+
+const User2SignOut = () => {
+  $('#SignInButton2').css('display', 'block')
+  $('#User2-Signout').css('display', 'none')
+  $('#Join').css('display', 'none')
 }
 
 module.exports = {
   onSignIn,
-  onSignOut
+  onSignOut,
+  User2SignIn,
+  User2SignOut
 }
