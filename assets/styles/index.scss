@@ -1,7 +1,7 @@
 // @Author: xiaojiezhang
 // @Date:   2019-01-03T09:18:51-05:00
 // @Last modified by:   xiaojiezhang
-// @Last modified time: 2019-01-05T22:29:40-05:00
+// @Last modified time: 2019-01-06T10:29:49-05:00
 
 
 
@@ -22,6 +22,7 @@
 #checkbox,
 #User2-Signout,
 #Join,
+#User1,
 #User2 {
   display: none;
 }
@@ -85,4 +86,13 @@ body {
 
 #result-content{
   font-size: 200px;
+}
+
+
+.info{
+  margin:20px auto;
+}
+
+.card-title{
+  text-align:center;
 }

@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:13:04-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-04T11:49:33-05:00
+ * @Last modified time: 2019-01-06T07:40:42-05:00
  */
 const store = require('../store')
 
@@ -27,7 +27,7 @@ const signout = () => {
     url: 'https://tic-tac-toe-wdi.herokuapp.com/sign-out',
     method: 'DELETE',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + store.user1.token
     }
   })
 }
@@ -37,7 +37,7 @@ const changepassword = (data) => {
     url: 'https://tic-tac-toe-wdi.herokuapp.com/change-password',
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + store.user1.token
     },
     data
   })

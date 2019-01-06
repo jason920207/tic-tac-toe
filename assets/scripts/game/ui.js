@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-05T22:32:14-05:00
+ * @Last modified time: 2019-01-06T14:04:26-05:00
  */
 
 const Gameevents = require('./events')
@@ -35,6 +35,9 @@ const onCreateGameSuccess = response => {
   $('#box').css('display', 'block')
   $('#result').css('display', 'none')
 }
+
+
+
 
 const onCreateGameFail = err => {
   console.log(err)

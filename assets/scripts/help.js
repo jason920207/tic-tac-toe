@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T08:51:48-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-05T22:03:30-05:00
+ * @Last modified time: 2019-01-06T11:00:33-05:00
  */
 // hide sign up/ sign in botton when sign in
 const onSignIn = () => {
@@ -10,10 +10,12 @@ const onSignIn = () => {
   $('#SignUpButton').css('display', 'none')
   $('#sign-out').css('display', 'block')
   $('#ChangePassword').css('display', 'block')
-  $('#checkbox').css('display', 'block')
+  $('#User1').css('display', 'block')
   $('#User1-Info').css('display', 'block')
+  $('#checkbox').css('display', 'block')
   $('#Button-Status').css('display', 'block')
   $('#User2').css('display', 'block')
+  $('#User2-info').css('display', 'block')
 }
 
 const onSignOut = () => {
@@ -24,24 +26,21 @@ const onSignOut = () => {
   $('#checkbox').css('display', 'none')
   $('#Button-Status').css('display', 'none')
   $('#User1-Info').css('display', 'none')
+  $('#User1').css('display', 'none')
   $('#User2').css('display', 'none')
+  $('#User2-info').css('display', 'none')
 }
 
 const User2SignInSuccess = () => {
   $('#SignInButton2').css('display', 'none')
-  $('#User2-Signout').css('display', 'block')
-  $('#Join').css('display', 'block')
-  $('#User2-info').css('display', 'block')
+  $('#User2-Signout').css('display', 'inline')
+  $('#Join').css('display', 'inline')
 }
-
-
 
 const User2SignOut = () => {
   $('#SignInButton2').css('display', 'block')
   $('#User2-Signout').css('display', 'none')
   $('#Join').css('display', 'none')
-  $('#User2-info').css('display', 'none')
-
 }
 
 const ClickWarning = () => {
@@ -54,7 +53,6 @@ const ClickSuccess = () => {
   $('#tip').removeClass('btn-danger')
   $('#tip').addClass('btn-info')
 }
-
 
 module.exports = {
   onSignIn,
