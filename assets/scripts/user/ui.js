@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-04T14:29:30-05:00
+ * @Last modified time: 2019-01-06T10:37:15-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -18,16 +18,17 @@ const onSignUpFail = err => {
 
 const onSignInSuccess = response => {
   console.log(response)
-  $('#content').html("Sign in Success")
   $('#exampleModalLong1').modal('hide')
-  store.user = response.user
-  const UserInfo = (`
-    <h3>Player 1</h3>
-    <h4>id: ${store.user.id}</h4>
-    <h4>email: ${store.user.email}</h4>
-    `)
-  $('#User1').html(UserInfo)
+  store.user1 = response.user
+  store.user1.score = 0
+  $('#player1-header').html(`<h3>Player 1: ${store.user1.email}</h3>`)
   help.onSignIn()
+  // const UserInfo = (`
+  //   <h3>Player 1</h3>
+  //   <h4>id: ${store.user.id}</h4>
+  //   <h4>email: ${store.user.email}</h4>
+  //   `)
+  // $('#User1-Info').html(UserInfo)
 }
 
 const onSignInFail = err => {
@@ -35,7 +36,7 @@ const onSignInFail = err => {
 }
 
 const onSignOutSuccess = response => {
-  $('#content').html("Sign Out Success")
+  store.user1 = null
   help.onSignOut()
 }
 

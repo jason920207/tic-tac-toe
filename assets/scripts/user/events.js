@@ -2,12 +2,11 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:08-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-04T12:16:52-05:00
+ * @Last modified time: 2019-01-05T10:04:39-05:00
  */
 const ui = require('./ui')
 const api = require('./api')
 const getFormFields = require('../../../lib/get-form-fields')
-
 
 const onSignUp = event => {
   event.preventDefault()
@@ -40,8 +39,6 @@ const onChangePassword = event => {
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFail)
 }
-
-
 
 module.exports = {
   onSignUp,
