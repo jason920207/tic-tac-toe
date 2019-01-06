@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:30-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-04T14:53:33-05:00
+ * @Last modified time: 2019-01-05T10:13:42-05:00
  */
 const store = require('../store')
 
@@ -54,6 +54,7 @@ const update = (id, index, value, over) => {
       }
     })
   })
+
 }
 
 

@@ -2,12 +2,13 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:54:36-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-05T07:29:31-05:00
+ * @Last modified time: 2019-01-05T09:54:45-05:00
  */
 
 const api = require('./api')
 const ui = require('./ui')
 const getFormFields = require('../../../lib/get-form-fields')
+const store = require('../store')
 
 const onSignIn = event => {
   event.preventDefault()
@@ -16,6 +17,7 @@ const onSignIn = event => {
   api.signin(data)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFail)
+  onJoin()
 }
 
 const onSignOut = event => {
@@ -24,7 +26,19 @@ const onSignOut = event => {
     .catch(ui.onSignOutFail)
 }
 
+const onJoin = event => {
+  if (store.game.id) {
+    const gameid = store.game.id
+    api.join(gameid)
+      .then()
+      .catch()
+  } else {
+    console.log('please Create Game')
+  }
+}
+
 module.exports = {
   onSignIn,
-  onSignOut
+  onSignOut,
+  onJoin
 }
