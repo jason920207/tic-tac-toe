@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:57:56-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T18:40:02-05:00
+ * @Last modified time: 2019-01-07T12:04:37-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -32,7 +32,6 @@ const onSignOutFail = err => {
 
 const onJoinSuccess = response => {
   help.User2JoinInSuccess()
-  console.log('Join Success')
 }
 
 const onJoinFail = response => {

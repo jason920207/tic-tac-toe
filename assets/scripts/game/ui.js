@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T11:31:14-05:00
+ * @Last modified time: 2019-01-07T12:01:18-05:00
  */
 
 const Gameevents = require('./events')
@@ -64,7 +64,7 @@ const onUpdateSuccess = response => {
     $(`#${store.index}`).prepend($('<img>', {class:'theImg', src: 'assets/image/o.png'}))
   }
   store.symbol = flip(symbol)
-  help.tooltipChange("Success")
+  help.tooltipChange('Success')
 }
 
 const flip = data => {
@@ -76,9 +76,10 @@ const flip = data => {
 }
 
 const onUpdateFail = err => {
-    $('#tooltip').removeClass('btn-info')
-    $('#tooltip').addClass('btn-danger')
-    help.tooltipChange('Please Create Game First')
+  console.log(err)
+  $('#tooltip').removeClass('btn-info')
+  $('#tooltip').addClass('btn-danger')
+  help.tooltipChange('Please Create Game First')
 }
 
 const Win = () => {

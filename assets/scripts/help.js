@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T08:51:48-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T17:08:45-05:00
+ * @Last modified time: 2019-01-07T13:11:36-05:00
  */
 // hide sign up/ sign in botton when sign in
 const onSignIn = () => {
@@ -17,6 +17,7 @@ const onSignIn = () => {
   $('#User2').css('display', 'block')
   $('#User2-info').css('display', 'block')
   $('#result').css('display', 'none')
+  $('#carouselExampleControls').css('display', 'none')
 }
 
 const onSignOut = () => {
@@ -30,16 +31,20 @@ const onSignOut = () => {
   $('#User1').css('display', 'none')
   $('#User2').css('display', 'none')
   $('#User2-info').css('display', 'none')
+  $('#carouselExampleControls').css('display', 'block')
 }
 
 const User2SignInSuccess = () => {
   $('#SignInButton2').css('display', 'none')
   $('#User2-Signout').css('display', 'inline')
   $('#Join').css('display', 'inline')
+  tooltipChange('User2 SignIn Success')
 }
 
 const User2JoinInSuccess = () => {
   $('#Join').css('display', 'none')
+  console.log('success')
+  tooltipChange('User2 Join Success')
 }
 
 const tooltipChange = (string) => {
@@ -50,6 +55,7 @@ const User2SignOut = () => {
   $('#SignInButton2').css('display', 'block')
   $('#User2-Signout').css('display', 'none')
   $('#Join').css('display', 'none')
+  tooltipChange('User2 Log Out Success')
 }
 
 const ClickWarning = () => {

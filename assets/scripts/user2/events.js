@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:54:36-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T16:50:58-05:00
+ * @Last modified time: 2019-01-07T12:08:21-05:00
  */
 
 const api = require('./api')
@@ -30,8 +30,8 @@ const onJoin = event => {
   if (store.game.id) {
     const gameid = store.game.id
     api.join(gameid)
-      .then()
-      .catch()
+      .then(ui.onJoinSuccess)
+      .catch(ui.onJoinFail)
   } else {
     console.log('please Create Game')
   }
