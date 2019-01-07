@@ -2,25 +2,21 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T14:04:26-05:00
+ * @Last modified time: 2019-01-07T12:01:18-05:00
  */
 
 const Gameevents = require('./events')
 const store = require('../store')
+const help = require('../help')
+const api = require('./api')
 
 const onGetGameSuccess = response => {
   const games = response.games
   console.log(games)
-
-  $('#status-content1').append('<i class="fas fa-user-secret"></i>')
-  $('#status-content2').append('<i class="fas fa-user-secret"></i>')
+  OnResetStatus()
+  $('#status-title').text('Game History')
   games.forEach(function (game) {
-    const User1HTML = (`
-      <h4>Game ID: ${game.id}</h4>
-
-      `)
-    $('#status-content1').append(GameHTML)
-    $('#status-content1').append(GameHTML)
+    showgame(game)
   })
 }
 
@@ -29,15 +25,16 @@ const onGetGameFail = err => {
 }
 
 const onCreateGameSuccess = response => {
+  store.isover = false
   store.game = response.game
+  store.Cells= ['','','','','','','','','']
   $('.square').html('')
-  $('#tip').text('Create Success')
+  help.tooltipChange('Create Success')
   $('#box').css('display', 'block')
   $('#result').css('display', 'none')
+  $('#x-turn').removeClass('btn-info')
+  $('#y-turn').removeClass('btn-success')
 }
-
-
-
 
 const onCreateGameFail = err => {
   console.log(err)
@@ -46,12 +43,9 @@ const onCreateGameFail = err => {
 const onShowGameSuccess = response => {
   const game = response.game
   console.log(game)
-  $('#content').html('<ul></ul>')
-  game.cells.forEach(function (cell) {
-    $('#content').append(`
-        <li>${cell}</li>
-    `)
-  })
+  OnResetStatus()
+  $('#status-title').text('Ongoing Game')
+  showgame(game)
 }
 
 const onShowGameFail = err => {
@@ -70,8 +64,7 @@ const onUpdateSuccess = response => {
     $(`#${store.index}`).prepend($('<img>', {class:'theImg', src: 'assets/image/o.png'}))
   }
   store.symbol = flip(symbol)
-
-  return Win()
+  help.tooltipChange('Success')
 }
 
 const flip = data => {
@@ -83,39 +76,46 @@ const flip = data => {
 }
 
 const onUpdateFail = err => {
-    $('#tip').removeClass('btn-info')
-    $('#tip').addClass('btn-danger')
-    $('#tip').html('Please Create Game First')
+  console.log(err)
+  $('#tooltip').removeClass('btn-info')
+  $('#tooltip').addClass('btn-danger')
+  help.tooltipChange('Please Create Game First')
 }
 
 const Win = () => {
   const data = store.game
-  const cells = data.cells
-  console.log(XWin(cells))
-  console.log(OWin(cells))
+  console.log(data)
+  const cells = store.Cells
   if (XWin(cells) === true) {
-    $('#tip').html('Retry? Create new Game')
-    $('#box').css('display', 'none')
-    $('#result').css('display', 'block')
+    store.user1.score += 1
+    ShowWin()
     $('#result').html("<a class='btn btn-danger w-100 h-100' id='result-content'>X Win</a>")
+    $('#user1-score').text(`${store.user1.score}`)
+    store.isover = true
+
     return true
   } else if (OWin(cells) === true) {
-    $('#tip').html('Retry? Create new Game')
-    $('#box').css('display', 'none')
-    $('#result').css('display', 'block')
+    store.user2.score += 1
+    ShowWin()
     $('#result').html("<a class='btn btn-danger  w-100 h-100' id='result-content'>Y Win</a>")
+    $('#user2-score').text(`${store.user2.score}`)
+    store.isover = true
     return true
   } else {
     if (draw(cells) === true) {
-      $('#tip').html('Retry? Create new Game')
-      $('#box').css('display', 'none')
-      $('#result').css('display', 'block')
+      ShowWin()
       $('#result').html("<a class='btn btn-danger w-100 h-100' id='result-content'>DRAW</a>")
+      store.isover = true
       return true
     }
   }
-
   return false
+}
+
+const ShowWin = () => {
+  $('#tooltip').html('Retry? Create new Game')
+  $('#box').css('display', 'none')
+  $('#result').css('display', 'block')
 }
 
 const XWin = (cells) => {
@@ -172,6 +172,51 @@ const draw = cells => {
   return false
 }
 
+// reset Status
+const OnResetStatus = () => {
+  $('#status-content1').html('')
+  $('#user1-id').html('')
+  $('#user1-email').html('')
+  $('#user2-id').html('')
+  $('#user2-email').html('')
+  $('#status-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
+  $('#user1-id').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#user1-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#user2-id').append('<a><i class="fas fa-user-ninja"></i>Player2</a>')
+  $('#user2-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+}
+
+
+const showgame = (game) => {
+  const GameHTML = (`
+    <h6>${game.id}</h6>
+    `)
+  const User1ID = (`
+    <h6>${game.player_x.id}</h6>
+    `)
+  const User1Email = (`
+    <h6>${game.player_x.email}</h6>
+    `)
+  if (game.player_o) {
+    const User2ID = (`
+      <h6>${game.player_o.id}</h6>
+      `)
+    const User2Email = (`
+      <h6>${game.player_o.email}</h6>
+      `)
+    $('#user2-id').append(User2ID)
+    $('#user2-email').append(User2Email)
+  } else {
+    const User2HTML = (`
+      <h6>None</h6>
+      `)
+    $('#user2-id').append(User2HTML)
+    $('#user2-email').append(User2HTML)
+  }
+  $('#status-content1').append(GameHTML)
+  $('#user1-id').append(User1ID)
+  $('#user1-email').append(User1Email)
+}
 module.exports = {
   onGetGameSuccess,
   onGetGameFail,
@@ -180,5 +225,6 @@ module.exports = {
   onShowGameSuccess,
   onShowGameFail,
   onUpdateSuccess,
-  onUpdateFail
+  onUpdateFail,
+  Win
 }

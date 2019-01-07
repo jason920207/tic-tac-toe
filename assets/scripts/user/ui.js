@@ -2,13 +2,13 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T10:37:15-05:00
+ * @Last modified time: 2019-01-07T09:05:12-05:00
  */
 const store = require('../store')
 const help = require('../help')
+const game = require('../game/events')
 
 const onSignUpSuccess = response => {
-  $('#content').html("Sign up Success")
   $('#exampleModalLong').modal('hide')
 }
 
@@ -21,8 +21,13 @@ const onSignInSuccess = response => {
   $('#exampleModalLong1').modal('hide')
   store.user1 = response.user
   store.user1.score = 0
+  help.tooltipChange('Welcome To Play Tic-Tac-Toe')
   $('#player1-header').html(`<h3>Player 1: ${store.user1.email}</h3>`)
+  $('#user1-score').text(`${store.user1.score}`)
   help.onSignIn()
+  console.log("reset game")
+  game.onResetGame()
+  console.log("reset game")
   // const UserInfo = (`
   //   <h3>Player 1</h3>
   //   <h4>id: ${store.user.id}</h4>
@@ -37,6 +42,7 @@ const onSignInFail = err => {
 
 const onSignOutSuccess = response => {
   store.user1 = null
+  store.user2 = null
   help.onSignOut()
 }
 

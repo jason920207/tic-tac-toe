@@ -1,7 +1,7 @@
 // @Author: xiaojiezhang
 // @Date:   2019-01-03T09:18:51-05:00
 // @Last modified by:   xiaojiezhang
-// @Last modified time: 2019-01-06T10:29:49-05:00
+// @Last modified time: 2019-01-07T13:03:49-05:00
 
 
 
@@ -36,7 +36,7 @@
 }
 
 
-#tip{
+#tooltip{
   height:30px !important;
   margin:10px;
   text-align: center;
@@ -45,7 +45,7 @@
 
 #status-box{
  margin: 0 auto;
- width: 100px;
+ width: 100%;
 }
 
 #box{
@@ -95,4 +95,30 @@ body {
 
 .card-title{
   text-align:center;
+}
+
+#user1-score,
+#user2-score{
+  text-align: center;
+}
+
+.turn{
+/*   background-color: white; */
+  color : white;
+}
+
+.show-turn{
+  width:100%;
+}
+
+#home-image {
+  position: absolute;
+  left: 25%;
+  top: 10%;
+  width: 75%;
+  height: 75%;
+}
+
+.carousel-image {
+
 }
