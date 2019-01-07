@@ -2,26 +2,27 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T14:04:26-05:00
+ * @Last modified time: 2019-01-06T21:31:40-05:00
  */
 
 const Gameevents = require('./events')
 const store = require('../store')
+const help = require('../help')
+const api = require('./api')
 
 const onGetGameSuccess = response => {
   const games = response.games
   console.log(games)
-
   $('#status-content1').append('<i class="fas fa-user-secret"></i>')
   $('#status-content2').append('<i class="fas fa-user-secret"></i>')
-  games.forEach(function (game) {
-    const User1HTML = (`
-      <h4>Game ID: ${game.id}</h4>
-
-      `)
-    $('#status-content1').append(GameHTML)
-    $('#status-content1').append(GameHTML)
-  })
+//   games.forEach(function (game) {
+//     const User1HTML = (`
+//       <h4>Game ID: ${game.id}</h4>
+//
+//       `)
+//     $('#status-content1').append(GameHTML)
+//     $('#status-content1').append(GameHTML)
+//   })
 }
 
 const onGetGameFail = err => {
@@ -29,15 +30,15 @@ const onGetGameFail = err => {
 }
 
 const onCreateGameSuccess = response => {
+  store.isover = false
   store.game = response.game
+  store.Cells= ['','','','','','','','','']
   $('.square').html('')
-  $('#tip').text('Create Success')
+  help.tooltipChange('Create Success')
   $('#box').css('display', 'block')
-  $('#result').css('display', 'none')
+  $('#x-turn').removeClass('btn-info')
+  $('#y-turn').removeClass('btn-success')
 }
-
-
-
 
 const onCreateGameFail = err => {
   console.log(err)
@@ -70,8 +71,7 @@ const onUpdateSuccess = response => {
     $(`#${store.index}`).prepend($('<img>', {class:'theImg', src: 'assets/image/o.png'}))
   }
   store.symbol = flip(symbol)
-
-  return Win()
+  help.tooltipChange("Success")
 }
 
 const flip = data => {
@@ -83,39 +83,45 @@ const flip = data => {
 }
 
 const onUpdateFail = err => {
-    $('#tip').removeClass('btn-info')
-    $('#tip').addClass('btn-danger')
-    $('#tip').html('Please Create Game First')
+    $('#tooltip').removeClass('btn-info')
+    $('#tooltip').addClass('btn-danger')
+    help.tooltipChange('Please Create Game First')
 }
 
 const Win = () => {
   const data = store.game
-  const cells = data.cells
-  console.log(XWin(cells))
-  console.log(OWin(cells))
+  console.log(data)
+  const cells = store.Cells
   if (XWin(cells) === true) {
-    $('#tip').html('Retry? Create new Game')
-    $('#box').css('display', 'none')
-    $('#result').css('display', 'block')
+    store.user1.score += 1
+    ShowWin()
     $('#result').html("<a class='btn btn-danger w-100 h-100' id='result-content'>X Win</a>")
+    $('#user1-score').text(`${store.user1.score}`)
+    store.isover = true
+
     return true
   } else if (OWin(cells) === true) {
-    $('#tip').html('Retry? Create new Game')
-    $('#box').css('display', 'none')
-    $('#result').css('display', 'block')
+    store.user2.score += 1
+    ShowWin()
     $('#result').html("<a class='btn btn-danger  w-100 h-100' id='result-content'>Y Win</a>")
+    $('#user2-score').text(`${store.user2.score}`)
+    store.isover = true
     return true
   } else {
     if (draw(cells) === true) {
-      $('#tip').html('Retry? Create new Game')
-      $('#box').css('display', 'none')
-      $('#result').css('display', 'block')
+      ShowWin()
       $('#result').html("<a class='btn btn-danger w-100 h-100' id='result-content'>DRAW</a>")
+      store.isover = true
       return true
     }
   }
-
   return false
+}
+
+const ShowWin = () => {
+  $('#tooltip').html('Retry? Create new Game')
+  $('#box').css('display', 'none')
+  $('#result').css('display', 'block')
 }
 
 const XWin = (cells) => {
@@ -180,5 +186,6 @@ module.exports = {
   onShowGameSuccess,
   onShowGameFail,
   onUpdateSuccess,
-  onUpdateFail
+  onUpdateFail,
+  Win
 }

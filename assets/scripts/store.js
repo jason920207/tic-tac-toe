@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T09:18:51-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T07:39:27-05:00
+ * @Last modified time: 2019-01-06T16:47:08-05:00
  */
 
 
@@ -14,6 +14,10 @@ const store = {
   symbol: 'x',
   game: {
     id: null
+  },
+  Cells:['','','','','','','','',''],
+  user2: {
+    score: 0
   }
 }
 

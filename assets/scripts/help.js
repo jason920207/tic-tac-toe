@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T08:51:48-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T11:00:33-05:00
+ * @Last modified time: 2019-01-06T17:08:45-05:00
  */
 // hide sign up/ sign in botton when sign in
 const onSignIn = () => {
@@ -16,6 +16,7 @@ const onSignIn = () => {
   $('#Button-Status').css('display', 'block')
   $('#User2').css('display', 'block')
   $('#User2-info').css('display', 'block')
+  $('#result').css('display', 'none')
 }
 
 const onSignOut = () => {
@@ -37,6 +38,14 @@ const User2SignInSuccess = () => {
   $('#Join').css('display', 'inline')
 }
 
+const User2JoinInSuccess = () => {
+  $('#Join').css('display', 'none')
+}
+
+const tooltipChange = (string) => {
+  $('#tooltip').text(`${string}`)
+}
+
 const User2SignOut = () => {
   $('#SignInButton2').css('display', 'block')
   $('#User2-Signout').css('display', 'none')
@@ -44,14 +53,14 @@ const User2SignOut = () => {
 }
 
 const ClickWarning = () => {
-  $('#tip').removeClass('btn-info')
-  $('#tip').addClass('btn-danger')
-  $('#tip').html('Please Don\'t click again')
+  $('#tooltip').removeClass('btn-info')
+  $('#tooltip').addClass('btn-danger')
+  $('#tooltip').html('Please Don\'t click again')
 }
 
 const ClickSuccess = () => {
-  $('#tip').removeClass('btn-danger')
-  $('#tip').addClass('btn-info')
+  $('#tooltip').removeClass('btn-danger')
+  $('#tooltip').addClass('btn-info')
 }
 
 module.exports = {
@@ -60,5 +69,7 @@ module.exports = {
   User2SignInSuccess,
   User2SignOut,
   ClickWarning,
-  ClickSuccess
+  ClickSuccess,
+  User2JoinInSuccess,
+  tooltipChange
 }

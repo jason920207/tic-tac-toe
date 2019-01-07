@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:35-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-05T22:13:42-05:00
+ * @Last modified time: 2019-01-06T21:29:42-05:00
  */
 const api = require('./api')
 const ui = require('./ui')
@@ -34,19 +34,25 @@ const onShowGame = event => {
 const onUpdate = event => {
   const Userid = store.game.id
   const index = event.target.id
-  const over = store.isover
   const symbol = store.symbol
   store.index = index
+
+  if (symbol === 'x') {
+    $('#y-turn').addClass('btn-success')
+    $('#x-turn').removeClass('btn-info')
+  } else {
+    $('#y-turn').removeClass('btn-success')
+    $('#x-turn').addClass('btn-info')
+  }
+
   if (index !== '') {
     if ($(`#${index}`).html() === '') {
       help.ClickSuccess()
-      api.update(Userid, index, symbol, over)
+      store.Cells[`${index}`] = symbol
+      console.log(store.Cells)
+      ui.Win()
+      api.update(Userid, index, symbol, store.isover)
         .then(ui.onUpdateSuccess)
-        .then((response) => {
-          if (response) {
-            store.isover = true
-          }
-        })
         .catch(ui.onUpdateFail)
     }
   } else {

@@ -141,12 +141,10 @@
                       <div class="modal-body">
                         <div class="row">
                           <div class="col-6" id="status-content1">
-
                           </div>
                           <div class="col-6" id="status-content2">
                           </div>
                         </div>
-
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -170,15 +168,25 @@
                 <img src="assets/image/user1.png" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">SCORE</h5>
-                  <p class="card-text"></p>
+                  <p id='user1-score' class="card-text ">0</p>
                 </div>
               </div>
             </div>
           </div>
         <div class='col-md-6' id="checkbox">
-          <a id="tip" class=" w-100 btn btn-info">Welcome To Tic-Tac-Toe</a>
-          <div class="row" id="status-box">
-            <button id="CreateGame" class="btn btn-secondary">Create New Game</button>
+          <div clas="row">
+            <a id="tooltip" class=" w-100 btn btn-info font-weight-bold">Welcome To Tic-Tac-Toe</a>
+          </div>
+          <div class="row text-center" id="status-box">
+            <div class="turn col-4">
+              <a id="x-turn" class="show-turn btn btn-lg">X</a>
+            </div>
+            <div class="col-4">
+              <button id="CreateGame" class="btn btn-secondary">Create New Game</button>
+            </div>
+            <div class="turn col-4">
+              <a id="y-turn" class="show-turn btn btn-lg">O</a>
+            </div>
           </div>
           <div id="box">
             <div class="row box-row" id="row1">
@@ -197,7 +205,7 @@
               <div class="col-4 square" id="8"></div>
             </div>
           </div>
-          <div id="result"></div>
+          <div class='row' id="result"></div>
         </div>
         <div class='col-md-3' id="User2">
           <div id="User2-info" class="info">
@@ -206,7 +214,7 @@
               <img src="assets/image/user2.png" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">SCORE</h5>
-                <p class="card-text"></p>
+                <p id='user2-score'class="card-text">0</p>
               </div>
               <div class="card-footer bg-transparent border-success" id="user2-foot-login">
                 <button id="Join" class="btn btn-primary "><i class="fas fa-plus-square"></i>  Join</button>
