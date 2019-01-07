@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T21:31:40-05:00
+ * @Last modified time: 2019-01-07T11:31:14-05:00
  */
 
 const Gameevents = require('./events')
@@ -13,16 +13,11 @@ const api = require('./api')
 const onGetGameSuccess = response => {
   const games = response.games
   console.log(games)
-  $('#status-content1').append('<i class="fas fa-user-secret"></i>')
-  $('#status-content2').append('<i class="fas fa-user-secret"></i>')
-//   games.forEach(function (game) {
-//     const User1HTML = (`
-//       <h4>Game ID: ${game.id}</h4>
-//
-//       `)
-//     $('#status-content1').append(GameHTML)
-//     $('#status-content1').append(GameHTML)
-//   })
+  OnResetStatus()
+  $('#status-title').text('Game History')
+  games.forEach(function (game) {
+    showgame(game)
+  })
 }
 
 const onGetGameFail = err => {
@@ -36,6 +31,7 @@ const onCreateGameSuccess = response => {
   $('.square').html('')
   help.tooltipChange('Create Success')
   $('#box').css('display', 'block')
+  $('#result').css('display', 'none')
   $('#x-turn').removeClass('btn-info')
   $('#y-turn').removeClass('btn-success')
 }
@@ -47,12 +43,9 @@ const onCreateGameFail = err => {
 const onShowGameSuccess = response => {
   const game = response.game
   console.log(game)
-  $('#content').html('<ul></ul>')
-  game.cells.forEach(function (cell) {
-    $('#content').append(`
-        <li>${cell}</li>
-    `)
-  })
+  OnResetStatus()
+  $('#status-title').text('Ongoing Game')
+  showgame(game)
 }
 
 const onShowGameFail = err => {
@@ -178,6 +171,51 @@ const draw = cells => {
   return false
 }
 
+// reset Status
+const OnResetStatus = () => {
+  $('#status-content1').html('')
+  $('#user1-id').html('')
+  $('#user1-email').html('')
+  $('#user2-id').html('')
+  $('#user2-email').html('')
+  $('#status-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
+  $('#user1-id').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#user1-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#user2-id').append('<a><i class="fas fa-user-ninja"></i>Player2</a>')
+  $('#user2-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+}
+
+
+const showgame = (game) => {
+  const GameHTML = (`
+    <h6>${game.id}</h6>
+    `)
+  const User1ID = (`
+    <h6>${game.player_x.id}</h6>
+    `)
+  const User1Email = (`
+    <h6>${game.player_x.email}</h6>
+    `)
+  if (game.player_o) {
+    const User2ID = (`
+      <h6>${game.player_o.id}</h6>
+      `)
+    const User2Email = (`
+      <h6>${game.player_o.email}</h6>
+      `)
+    $('#user2-id').append(User2ID)
+    $('#user2-email').append(User2Email)
+  } else {
+    const User2HTML = (`
+      <h6>None</h6>
+      `)
+    $('#user2-id').append(User2HTML)
+    $('#user2-email').append(User2HTML)
+  }
+  $('#status-content1').append(GameHTML)
+  $('#user1-id').append(User1ID)
+  $('#user1-email').append(User1Email)
+}
 module.exports = {
   onGetGameSuccess,
   onGetGameFail,

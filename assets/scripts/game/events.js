@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:35-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-06T21:29:42-05:00
+ * @Last modified time: 2019-01-07T09:07:14-05:00
  */
 const api = require('./api')
 const ui = require('./ui')
@@ -19,6 +19,12 @@ const onGetGame = event => {
 
 const onCreateGame = event => {
   event.preventDefault()
+  api.creategame()
+    .then(ui.onCreateGameSuccess)
+    .catch(ui.onCreateGameFail)
+}
+
+const onResetGame = () => {
   api.creategame()
     .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFail)
@@ -64,5 +70,6 @@ module.exports = {
   onGetGame,
   onCreateGame,
   onShowGame,
-  onUpdate
+  onUpdate,
+  onResetGame
 }
