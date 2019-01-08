@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T22:41:05-05:00
+ * @Last modified time: 2019-01-08T08:41:24-05:00
  */
 
 const Gameevents = require('./events')
@@ -12,7 +12,6 @@ const api = require('./api')
 
 const onGetGameSuccess = response => {
   const games = response.games
-  console.log(games)
   OnResetStatus()
   $('#status-title').text('Game History(over)')
   games.forEach(function (game) {
@@ -27,7 +26,7 @@ const onGetGameFail = err => {
 const onCreateGameSuccess = response => {
   store.isover = false
   store.game = response.game
-  store.Cells= ['','','','','','','','','']
+  store.Cells = ['', '', '', '', '', '', '', '', '']
   $('.square').html('')
   help.tooltipChange('Create Success')
   $('#box').css('display', 'block')
@@ -91,17 +90,16 @@ const onShowGameSuccess = response => {
 }
 
 const recordonboard = () => {
-  for (let i = 0;i < 9;i++){
+  for (let i = 0; i < 9; i++) {
     if (store.game.cells[i] === 'x') {
-      $(`#${i}`).html($('<img>', {class:'theImg', src: 'assets/image/x.png'}))
+      $(`#${i}`).html($('<img>', {class: 'theImg', src: 'assets/image/x.png'}))
     } else if (store.game.cells[i] === 'o') {
-      $(`#${i}`).html($('<img>', {class:'theImg', src: 'assets/image/o.png'}))
+      $(`#${i}`).html($('<img>', {class: 'theImg', src: 'assets/image/o.png'}))
     } else {
       $(`#${i}`).html('')
     }
   }
 }
-
 
 const countsymbol = () => {
   let countx = 0
@@ -127,12 +125,12 @@ const onUpdateSuccess = response => {
   const symbol = store.symbol
 
   if (symbol === 'x') {
-    $(`#${store.index}`).prepend($('<img>', {class:'theImg', src: 'assets/image/x.png'}))
+    $(`#${store.index}`).prepend($('<img>', {class: 'theImg', src: 'assets/image/x.png'}))
   } else {
-    $(`#${store.index}`).prepend($('<img>', {class:'theImg', src: 'assets/image/o.png'}))
+    $(`#${store.index}`).prepend($('<img>', {class: 'theImg', src: 'assets/image/o.png'}))
   }
   store.symbol = flip(symbol)
-  help.tooltipChange('Success')
+  help.tooltipChange(`#${store.index} Clicked`)
 }
 
 const flip = data => {
@@ -231,9 +229,9 @@ const OWin = cells => {
 }
 
 const draw = cells => {
-  if (cells[0] !== "" && cells[1] !== "" && cells[2] !== "" && cells[3] !== "" &&
-   cells[4] !== "" && cells[5] !== "" && cells[6] !== "" && cells[7] !== "" &&
-  cells[8] !== "") {
+  if (cells[0] !== '' && cells[1] !== '' && cells[2] !== '' && cells[3] !== '' &&
+   cells[4] !== '' && cells[5] !== '' && cells[6] !== '' && cells[7] !== '' &&
+  cells[8] !== '') {
     return true
   }
 
@@ -307,7 +305,6 @@ const getunovergamesuccess = response => {
     showgame(game)
   })
 }
-
 
 module.exports = {
   onGetGameSuccess,
