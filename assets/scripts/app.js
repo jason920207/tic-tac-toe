@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T09:18:51-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-05T19:07:36-05:00
+ * @Last modified time: 2019-01-07T21:16:34-05:00
  */
 
 'use strict'
@@ -28,7 +28,8 @@ $(() => {
   //Game
   $('#Getgame').on('click', Gameevents.onGetGame)
   $('#CreateGame').on('click', Gameevents.onCreateGame)
-  $('#Showgame').on('click', Gameevents.onShowGame)
+  $('#showgame').on('submit', Gameevents.onShowGame)
+  $('#GetUnfinished').on('click', Gameevents.onShowUnoverGame)
   $('.square').on('click', Gameevents.onUpdate)
 
   //User2

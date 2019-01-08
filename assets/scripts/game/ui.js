@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T12:01:18-05:00
+ * @Last modified time: 2019-01-07T22:22:20-05:00
  */
 
 const Gameevents = require('./events')
@@ -14,7 +14,7 @@ const onGetGameSuccess = response => {
   const games = response.games
   console.log(games)
   OnResetStatus()
-  $('#status-title').text('Game History')
+  $('#status-title').text('Game History(over)')
   games.forEach(function (game) {
     showgame(game)
   })
@@ -41,11 +41,71 @@ const onCreateGameFail = err => {
 }
 
 const onShowGameSuccess = response => {
-  const game = response.game
-  console.log(game)
+  store.game = response.game
+  console.log(response.game)
   OnResetStatus()
-  $('#status-title').text('Ongoing Game')
-  showgame(game)
+  // show the game
+  $('#showgameModal').modal('hide')
+  const GameHTML = (`
+    <h6>${store.game.id}</h6>
+    `)
+  const User1ID = (`
+    <h6>${store.game.player_x.id}</h6>
+    `)
+  const User1Email = (`
+    <h6>${store.game.player_x.email}</h6>
+    `)
+  if (store.game.player_o) {
+    const User2ID = (`
+      <h6>${store.game.player_o.id}</h6>
+      `)
+    const User2Email = (`
+      <h6>${store.game.player_o.email}</h6>
+      `)
+    $('#showgameuser2-id').append(User2ID)
+    $('#showgameuser2-email').append(User2Email)
+  } else {
+    const User2HTML = (`
+      <h6>None</h6>
+      `)
+    $('#showgameuser2-id').append(User2HTML)
+    $('#showgameuser2-email').append(User2HTML)
+  }
+  $('#showgame-content1').append(GameHTML)
+  $('#showgameuser1-id').append(User1ID)
+  $('#showgameuser1-email').append(User1Email)
+
+  //
+  console.log(store.game.id)
+  console.log(store.game.cells)
+  recordonboard()
+  countsymbol()
+}
+
+const recordonboard = () => {
+  for (let i = 0;i < 9;i++){
+    if (store.game.cells[i] === 'x') {
+      $(`#${i}`).html($('<img>', {class:'theImg', src: 'assets/image/x.png'}))
+    } else if (store.game.cells[i] === 'o') {
+      $(`#${i}`).html($('<img>', {class:'theImg', src: 'assets/image/o.png'}))
+    } else {
+      $(`#${i}`).html('')
+    }
+  }
+}
+
+
+const countsymbol = () => {
+  let countx = 0
+  let counto = 0
+  for (let i = 0; i < 9; i++) {
+    if (store.game.cells[i] === 'x') {
+      countx += 1
+    } else if (store.game.cells[i] === 'o') {
+      counto += 1
+    }
+  }
+  store.symbol = countx > counto ? 'o' : 'x'
 }
 
 const onShowGameFail = err => {
@@ -217,6 +277,18 @@ const showgame = (game) => {
   $('#user1-id').append(User1ID)
   $('#user1-email').append(User1Email)
 }
+
+const getunovergamesuccess = response => {
+  const games = response.games
+  console.log(games)
+  OnResetStatus()
+  $('#status-title').text('Game History(unover)')
+  games.forEach(function (game) {
+    showgame(game)
+  })
+}
+
+
 module.exports = {
   onGetGameSuccess,
   onGetGameFail,
@@ -226,5 +298,6 @@ module.exports = {
   onShowGameFail,
   onUpdateSuccess,
   onUpdateFail,
-  Win
+  Win,
+  getunovergamesuccess
 }
