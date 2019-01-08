@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T22:22:20-05:00
+ * @Last modified time: 2019-01-07T22:41:05-05:00
  */
 
 const Gameevents = require('./events')
@@ -41,14 +41,22 @@ const onCreateGameFail = err => {
 }
 
 const onShowGameSuccess = response => {
+  Onshowgamereset()
   store.game = response.game
   console.log(response.game)
   OnResetStatus()
   // show the game
   $('#showgameModal').modal('hide')
-  const GameHTML = (`
-    <h6>${store.game.id}</h6>
-    `)
+  let GameHTML
+  if (store.game.over) {
+    GameHTML = (`
+      <h6>${store.game.id}(Over)</h6>
+      `)
+  } else {
+    GameHTML = (`
+      <h6>${store.game.id}(Not Over)</h6>
+      `)
+  }
   const User1ID = (`
     <h6>${store.game.player_x.id}</h6>
     `)
@@ -246,6 +254,18 @@ const OnResetStatus = () => {
   $('#user2-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
 }
 
+const Onshowgamereset = () => {
+  $('#showgame-content1').html('')
+  $('#showgameuser1-id').html('')
+  $('#showgameuser1-email').html('')
+  $('#showgameuser2-id').html('')
+  $('#showgameuser2-email').html('')
+  $('#showgame-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
+  $('#showgameuser1-id').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#showgameuser1-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#showgameuser2-id').append('<a><i class="fas fa-user-ninja"></i>Player2</a>')
+  $('#showgameuser2-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+}
 
 const showgame = (game) => {
   const GameHTML = (`

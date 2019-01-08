@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T09:18:51-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T21:16:34-05:00
+ * @Last modified time: 2019-01-07T22:39:16-05:00
  */
 
 'use strict'
@@ -16,6 +16,7 @@ const Userevents = require('./user/events')
 const Gameevents = require('./game/events')
 const User2events = require('./user2/events')
 const Control = require('./control/control')
+const gameui = require('./game/ui')
 
 $(() => {
   // your JS code goes here
@@ -36,5 +37,6 @@ $(() => {
   $('#User2-Signin').on('submit', User2events.onSignIn)
   $('#User2-Signout').on('click', User2events.onSignOut)
   $('#Join').on('click', User2events.onJoin)
+  $('#clearshowgame').on('click',gameui.Onshowgamereset)
 
 })
