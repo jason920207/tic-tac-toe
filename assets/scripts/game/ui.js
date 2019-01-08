@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T13:56:46-05:00
+ * @Last modified time: 2019-01-08T14:13:48-05:00
  */
 
 const Gameevents = require('./events')
@@ -115,7 +115,7 @@ const countsymbol = () => {
 }
 
 const onShowGameFail = err => {
-  console.log(err)
+  help.tooltipChange("Show Game Fail")
 }
 
 const onUpdateSuccess = response => {
