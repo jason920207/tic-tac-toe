@@ -23,7 +23,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
               <!--              User Manage -->
-
+              <div id='sign-component'>
                 <button type="button" id="SignUpButton"class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#exampleModalLong">
                   <i class="far fa-user"></i> Sign Up
                 </button>
@@ -93,6 +93,10 @@
                     </div>
                   </div>
                 </div>
+              </div>
+
+
+              <div id='signout-component'>
                 <button id='sign-out' class="btn btn-primary mr-sm-2"><i class="fas fa-sign-out-alt"></i>Sign Out</button>
                 <button type="button" id="ChangePassword" class="btn btn-primary  mr-sm-2" data-toggle="modal" data-target="#ModalChangePassword">
                   <i class="fas fa-passport"></i>  Change Password
@@ -126,7 +130,7 @@
                   </div>
                 </div>
 
-                <button type="button" id="Button-Status"class="btn btn-primary" data-toggle="modal" data-target="#status">
+                <button type="button" id="Button-Status"class="btn btn-primary mr-sm-2" data-toggle="modal" data-target="#status">
                   <i class="fas fa-info"></i>  Get Status
                 </button>
                 <!-- Modal -->
@@ -163,12 +167,61 @@
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button id="Getgame" class="btn btn-secondary">Getgame</button>
+                        <button id="Getgame" class="btn btn-secondary">Getgame(over)</button>
+                        <button id="GetUnfinished" class="btn btn-secondary">Getgame(not over)</button>
                         <button id="Showgame" class="btn btn-secondary">Show</button>
                       </div>
                     </div>
                   </div>
                 </div>
+                            <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#showgameModal">
+                  show game
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="showgameModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Show Game</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form action="" id ="showgame">
+                          <div class="form-group">
+                            <label for="">ID</label>
+                            <input type="text"  name="game[id]"  placeholder="Enter ID">
+                          </div>
+                          <div class="row">
+                            <div class="col-2 text-center" id="showgame-content1"></div>
+                            <div class="col-5 text-center" id='showgame-content2'>
+                              <div class="row">
+                                <div class="col-6" id="showgameuser1-id"></div>
+                                <div class="col-6" id="showgameuser1-email"></div>
+                              </div>
+                            </div>
+                            <div class="col-5 text-center" id="showgame-content3">
+                              <div class="row">
+                                <div class="col-6" id="showgameuser2-id"></div>
+                                <div class="col-6" id="showgameuser2-email"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <button class="btn btn-primary btn-block">submit</button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="clearshowgame">Clear</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
           </div>
         </div>
       </nav>

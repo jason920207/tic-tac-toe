@@ -2,13 +2,13 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:35-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T09:07:14-05:00
+ * @Last modified time: 2019-01-07T21:46:07-05:00
  */
 const api = require('./api')
 const ui = require('./ui')
 const store = require('../store')
 const help = require('../help')
-// const getFormFields = require('../../../lib/get-form-fields')
+const getFormFields = require('../../../lib/get-form-fields')
 
 const onGetGame = event => {
   event.preventDefault()
@@ -16,6 +16,13 @@ const onGetGame = event => {
     .then(ui.onGetGameSuccess)
     .catch(ui.onGetGameFail)
 }
+
+const onShowUnoverGame = event => {
+  api.getunovergame()
+    .then(ui.getunovergamesuccess)
+    .catch(ui.onGetGameFail)
+}
+
 
 const onCreateGame = event => {
   event.preventDefault()
@@ -31,13 +38,16 @@ const onResetGame = () => {
 }
 
 const onShowGame = event => {
-  const id = store.game.id
-  api.showgame(id)
+  event.preventDefault()
+  const data = getFormFields(event.target)
+
+  api.showgame(data.game.id)
     .then(ui.onShowGameSuccess)
     .catch(ui.onShowGameFail)
 }
 
 const onUpdate = event => {
+  console.log("update",store.game.id)
   const Userid = store.game.id
   const index = event.target.id
   const symbol = store.symbol
@@ -71,5 +81,6 @@ module.exports = {
   onCreateGame,
   onShowGame,
   onUpdate,
-  onResetGame
+  onResetGame,
+  onShowUnoverGame
 }
