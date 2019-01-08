@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T08:41:24-05:00
+ * @Last modified time: 2019-01-08T13:38:24-05:00
  */
 
 const Gameevents = require('./events')
@@ -92,9 +92,9 @@ const onShowGameSuccess = response => {
 const recordonboard = () => {
   for (let i = 0; i < 9; i++) {
     if (store.game.cells[i] === 'x') {
-      $(`#${i}`).html($('<img>', {class: 'theImg', src: 'assets/image/x.png'}))
+      $(`#${i}`).html($('<img>', {class: 'theImg', src: 'public/image/x.png'}))
     } else if (store.game.cells[i] === 'o') {
-      $(`#${i}`).html($('<img>', {class: 'theImg', src: 'assets/image/o.png'}))
+      $(`#${i}`).html($('<img>', {class: 'theImg', src: 'public/image/o.png'}))
     } else {
       $(`#${i}`).html('')
     }
