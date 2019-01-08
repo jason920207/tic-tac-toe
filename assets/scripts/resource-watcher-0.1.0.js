@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-08T09:09:54-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T09:25:09-05:00
+ * @Last modified time: 2019-01-08T13:20:19-05:00
  */
 'use strict';
 const resourceWatcher = function (url, conf) {
