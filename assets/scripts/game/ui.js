@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T13:49:34-05:00
+ * @Last modified time: 2019-01-08T13:56:46-05:00
  */
 
 const Gameevents = require('./events')
@@ -125,9 +125,9 @@ const onUpdateSuccess = response => {
   const symbol = store.symbol
 
   if (symbol === 'x') {
-    $(`#${store.index}`).prepend($('<img>', {class: 'theImg', src: 'public/image/x.png'}))
+    $(`#${store.index}`).html($('<img>', {class: 'theImg', src: 'public/image/x.png'}))
   } else {
-    $(`#${store.index}`).prepend($('<img>', {class: 'theImg', src: 'public/image/o.png'}))
+    $(`#${store.index}`).html($('<img>', {class: 'theImg', src: 'public/image/o.png'}))
   }
   store.symbol = flip(symbol)
   help.tooltipChange(`#${store.index} Clicked`)
