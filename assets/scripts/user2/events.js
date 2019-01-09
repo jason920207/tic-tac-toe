@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:54:36-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T11:46:14-05:00
+ * @Last modified time: 2019-01-09T14:33:11-05:00
  */
 
 const api = require('./api')
@@ -39,7 +39,7 @@ const onJoin = () => {
       .then(ui.onJoinSuccess)
       .catch(ui.onJoinFail)
   } else {
-    console.log('please Create Game')
+    help.tooltipChange('please Create Game')
   }
 }
 
