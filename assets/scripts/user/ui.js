@@ -2,7 +2,11 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
+
+ * @Last modified time: 2019-01-09T14:33:41-05:00
+
  * @Last modified time: 2019-01-09T14:11:55-05:00
+
  */
 const store = require('../store')
 const help = require('../help')
@@ -48,6 +52,7 @@ const onSignOutSuccess = response => {
   store.user2 = null
   help.onSignOut()
 }
+
 
 const onSignOutFail = () => {
   help.tooltipChange('Sign out wrong')
