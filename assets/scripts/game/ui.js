@@ -2,13 +2,14 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T21:13:36-05:00
+ * @Last modified time: 2019-01-08T21:26:13-05:00
  */
 
 const Gameevents = require('./events')
 const store = require('../store')
 const help = require('../help')
 const api = require('./api')
+const user2event = require('../user2/events')
 
 const onGetGameSuccess = response => {
   const games = response.games
@@ -34,6 +35,10 @@ const onCreateGameSuccess = response => {
   $('#result').css('display', 'none')
   $('#x-turn').removeClass('btn-info')
   $('#y-turn').removeClass('btn-success')
+
+  if (store.user2) {
+    user2event.onJoin()
+  }
 }
 
 const onCreateGameFail = () => {
