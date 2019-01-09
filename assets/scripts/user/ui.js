@@ -2,24 +2,25 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T09:36:57-05:00
+ * @Last modified time: 2019-01-09T09:49:10-05:00
  */
 const store = require('../store')
 const help = require('../help')
 const game = require('../game/events')
 
 const onSignUpSuccess = response => {
+  $('#signupModalLongTitle').html('Sign Up')
   $('#exampleModalLong').modal('hide')
 }
 
 const onSignUpFail = () => {
   $('#signupModalLongTitle').html('<a class="btn btn-danger">Please Check Your Email and Password</a>')
-
 }
 
 const onSignInSuccess = response => {
   help.ResetForm()
   console.log(response)
+  $('#signinModalLongTitle').html('Sign In')
   $('#exampleModalLong1').modal('hide')
   store.user1 = response.user
   store.user1.score = 0
@@ -51,13 +52,15 @@ const onSignOutFail = err => {
 }
 
 const onChangePasswordSuccess = response => {
+  $('#ChangepasswordModalLongTitle').html('Change Password')
   $('#content').html("Change Password Success")
   $('#ModalChangePassword').modal('hide')
   help.ResetForm()
 }
 
 const onChangePasswordFail = () => {
-  help.tooltipChange('Change Password Error')
+  $('#ChangepasswordModalLongTitle').html('<a class="btn btn-danger">Password is not match</a>')
+
 }
 module.exports = {
   onSignUpSuccess,
