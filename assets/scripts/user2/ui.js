@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:57:56-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T12:04:37-05:00
+ * @Last modified time: 2019-01-08T21:15:35-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -17,17 +17,20 @@ const onSignInSuccess = response => {
   help.User2SignInSuccess()
 }
 
-const onSignInFail = err => {
-  console.log(err)
+const onSignInFail = () => {
+  help.tooltipChange('User2 Sign in Fail')
 }
 
 const onSignOutSuccess = response => {
   help.User2SignOut()
   store.user2 = null
+  $('#player2-header').html('')
+  $('#user2-score').text('0')
+  $('#user1-score').text('0')
 }
 
-const onSignOutFail = err => {
-  console.log(err)
+const onSignOutFail = () => {
+  help.tooltipChange('User 2 Sign Out Fail')
 }
 
 const onJoinSuccess = response => {
@@ -35,7 +38,7 @@ const onJoinSuccess = response => {
 }
 
 const onJoinFail = response => {
-  console.log('Join Fail')
+  help.tooltipChange('User2 Join Fail')
 }
 
 module.exports = {

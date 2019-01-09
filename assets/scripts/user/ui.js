@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T14:13:08-05:00
+ * @Last modified time: 2019-01-08T21:14:33-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -53,8 +53,8 @@ const onChangePasswordSuccess = response => {
   $('#ModalChangePassword').modal('hide')
 }
 
-const onChangePasswordFail = err => {
-  console.log(err)
+const onChangePasswordFail = () => {
+  help.tooltipChange('Change Password Error')
 }
 module.exports = {
   onSignUpSuccess,

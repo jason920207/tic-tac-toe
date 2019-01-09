@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T14:13:48-05:00
+ * @Last modified time: 2019-01-08T21:13:36-05:00
  */
 
 const Gameevents = require('./events')
@@ -17,10 +17,11 @@ const onGetGameSuccess = response => {
   games.forEach(function (game) {
     showgame(game)
   })
+  help.tooltipChange('Show Game Success')
 }
 
-const onGetGameFail = err => {
-  console.log(err)
+const onGetGameFail = () => {
+  help.tooltipChange('Get Game Fail')
 }
 
 const onCreateGameSuccess = response => {
@@ -35,8 +36,8 @@ const onCreateGameSuccess = response => {
   $('#y-turn').removeClass('btn-success')
 }
 
-const onCreateGameFail = err => {
-  console.log(err)
+const onCreateGameFail = () => {
+  help.tooltipChange('Create Game Fail')
 }
 
 const onShowGameSuccess = response => {
@@ -82,11 +83,9 @@ const onShowGameSuccess = response => {
   $('#showgameuser1-id').append(User1ID)
   $('#showgameuser1-email').append(User1Email)
 
-  //
-  console.log(store.game.id)
-  console.log(store.game.cells)
   recordonboard()
   countsymbol()
+  help.tooltipChange('Show Game Success')
 }
 
 const recordonboard = () => {
@@ -114,8 +113,8 @@ const countsymbol = () => {
   store.symbol = countx > counto ? 'o' : 'x'
 }
 
-const onShowGameFail = err => {
-  help.tooltipChange("Show Game Fail")
+const onShowGameFail = () => {
+  help.tooltipChange('Show Game Fail')
 }
 
 const onUpdateSuccess = response => {
@@ -163,7 +162,7 @@ const Win = () => {
   } else if (OWin(cells) === true) {
     store.user2.score += 1
     ShowWin()
-    $('#result').html("<a class='btn btn-danger  w-100 h-100' id='result-content'>Y Win</a>")
+    $('#result').html("<a class='btn btn-danger  w-100 h-100' id='result-content'>O Win</a>")
     $('#user2-score').text(`${store.user2.score}`)
     store.isover = true
     return true
@@ -294,6 +293,7 @@ const showgame = (game) => {
   $('#status-content1').append(GameHTML)
   $('#user1-id').append(User1ID)
   $('#user1-email').append(User1Email)
+  help.tooltipChange('Show Game Success')
 }
 
 const getunovergamesuccess = response => {
@@ -304,6 +304,7 @@ const getunovergamesuccess = response => {
   games.forEach(function (game) {
     showgame(game)
   })
+  help.tooltipChange('Get not over game success')
 }
 
 module.exports = {
