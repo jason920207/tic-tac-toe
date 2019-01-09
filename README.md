@@ -29,3 +29,7 @@ User is alerted of tie
 User should have their score
 User can see their record
 User cna restart a new game
+
+
+*Link to wireframes*
+wireframes: https://imgur.com/mBAvgFW
