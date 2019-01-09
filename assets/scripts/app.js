@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T09:18:51-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T22:39:16-05:00
+ * @Last modified time: 2019-01-09T10:25:41-05:00
  */
 
 'use strict'
@@ -32,7 +32,6 @@ $(() => {
   $('#showgame').on('submit', Gameevents.onShowGame)
   $('#GetUnfinished').on('click', Gameevents.onShowUnoverGame)
   $('.square').on('click', Gameevents.onUpdate)
-
   //User2
   $('#User2-Signin').on('submit', User2events.onSignIn)
   $('#User2-Signout').on('click', User2events.onSignOut)
