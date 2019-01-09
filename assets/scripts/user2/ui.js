@@ -2,12 +2,13 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:57:56-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T21:15:35-05:00
+ * @Last modified time: 2019-01-09T08:39:03-05:00
  */
 const store = require('../store')
 const help = require('../help')
 
 const onSignInSuccess = response => {
+  help.ResetForm()
   console.log(response)
   $('#User-form2').modal('hide')
   store.user2 = response.user

@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T21:26:13-05:00
+ * @Last modified time: 2019-01-09T08:39:39-05:00
  */
 
 const Gameevents = require('./events')
@@ -270,6 +270,7 @@ const Onshowgamereset = () => {
 }
 
 const showgame = (game) => {
+  help.ResetForm()
   const GameHTML = (`
     <h6>${game.id}</h6>
     `)

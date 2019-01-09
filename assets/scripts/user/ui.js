@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-08T21:14:33-05:00
+ * @Last modified time: 2019-01-09T08:38:45-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -17,6 +17,7 @@ const onSignUpFail = err => {
 }
 
 const onSignInSuccess = response => {
+  help.ResetForm()
   console.log(response)
   $('#exampleModalLong1').modal('hide')
   store.user1 = response.user
@@ -51,6 +52,7 @@ const onSignOutFail = err => {
 const onChangePasswordSuccess = response => {
   $('#content').html("Change Password Success")
   $('#ModalChangePassword').modal('hide')
+  help.ResetForm()
 }
 
 const onChangePasswordFail = () => {
