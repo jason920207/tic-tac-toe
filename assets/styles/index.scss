@@ -1,11 +1,23 @@
 // @Author: xiaojiezhang
 // @Date:   2019-01-03T09:18:51-05:00
 // @Last modified by:   xiaojiezhang
+// @Last modified time: 2019-01-09T13:31:05-05:00
+=======
 // @Last modified time: 2019-01-09T13:51:03-05:00
+   master
 
 
 
 @import '~bootstrap/scss/bootstrap';
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+/* .col-4{
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+
+
+  &:nth-child()
+} */
+
 
 .square{
   border: 2px black solid;
@@ -57,6 +69,7 @@ body {
   background-size: cover;
   height: 100%;
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 #row1 .square{
@@ -115,8 +128,4 @@ body {
   top: 10%;
   width: 75%;
   height: 75%;
-}
-
-.carousel-image {
-
 }

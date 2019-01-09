@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T11:34:27-05:00
+ * @Last modified time: 2019-01-09T12:38:07-05:00
  */
 
 const Gameevents = require('./events')
@@ -45,11 +45,11 @@ const onCreateGameFail = () => {
 }
 
 const onShowGameSuccess = response => {
-  Onshowgamereset()
+  // Onshowgamereset()
   store.game = response.game
   OnResetStatus()
   // show the game
-  $('#showgameModal').modal('hide')
+  // $('#showgameModal').modal('hide')
   let GameHTML
   if (store.game.over) {
     GameHTML = (`
@@ -73,19 +73,18 @@ const onShowGameSuccess = response => {
     const User2Email = (`
       <h6>${store.game.player_o.email}</h6>
       `)
-    $('#showgameuser2-id').append(User2ID)
-    $('#showgameuser2-email').append(User2Email)
+    $('#user2-id').append(User2ID)
+    $('#user2-email').append(User2Email)
   } else {
     const User2HTML = (`
       <h6>None</h6>
       `)
-    $('#showgameuser2-id').append(User2HTML)
-    $('#showgameuser2-email').append(User2HTML)
+    $('#user2-id').append(User2HTML)
+    $('#user2-email').append(User2HTML)
   }
-  $('#showgame-content1').append(GameHTML)
-  $('#showgameuser1-id').append(User1ID)
-  $('#showgameuser1-email').append(User1Email)
-
+  $('#status-content1').append(GameHTML)
+  $('#user1-id').append(User1ID)
+  $('#user1-email').append(User1Email)
   recordonboard()
   countsymbol()
   help.tooltipChange('Show Game Success')
@@ -248,18 +247,18 @@ const OnResetStatus = () => {
   $('#user2-email').append('<a><i class="fas fa-user-secret"></i>Player2(Email)</a>')
 }
 
-const Onshowgamereset = () => {
-  $('#showgame-content1').html('')
-  $('#showgameuser1-id').html('')
-  $('#showgameuser1-email').html('')
-  $('#showgameuser2-id').html('')
-  $('#showgameuser2-email').html('')
-  $('#showgame-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
-  $('#showgameuser1-id').append('<a><i class="fas fa-user-secret"></i>Player1(ID)</a>')
-  $('#showgameuser1-email').append('<a><i class="fas fa-user-secret"></i>Player1(Email)</a>')
-  $('#showgameuser2-id').append('<a><i class="fas fa-user-ninja"></i>Player2(ID)</a>')
-  $('#showgameuser2-email').append('<a><i class="fas fa-user-secret"></i>Player2(Email)</a>')
-}
+// const Onshowgamereset = () => {
+//   $('#showgame-content1').html('')
+//   $('#showgameuser1-id').html('')
+//   $('#showgameuser1-email').html('')
+//   $('#showgameuser2-id').html('')
+//   $('#showgameuser2-email').html('')
+//   $('#showgame-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
+//   $('#showgameuser1-id').append('<a><i class="fas fa-user-secret"></i>Player1(ID)</a>')
+//   $('#showgameuser1-email').append('<a><i class="fas fa-user-secret"></i>Player1(Email)</a>')
+//   $('#showgameuser2-id').append('<a><i class="fas fa-user-ninja"></i>Player2(ID)</a>')
+//   $('#showgameuser2-email').append('<a><i class="fas fa-user-secret"></i>Player2(Email)</a>')
+// }
 
 const showgame = (game) => {
   help.ResetForm()
@@ -303,8 +302,6 @@ const getunovergamesuccess = response => {
   })
   help.tooltipChange('Get not over game success')
 }
-
-
 
 module.exports = {
   onGetGameSuccess,
