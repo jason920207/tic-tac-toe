@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:54:36-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T12:08:21-05:00
+ * @Last modified time: 2019-01-08T21:25:24-05:00
  */
 
 const api = require('./api')
@@ -26,7 +26,7 @@ const onSignOut = event => {
     .catch(ui.onSignOutFail)
 }
 
-const onJoin = event => {
+const onJoin = () => {
   if (store.game.id) {
     const gameid = store.game.id
     api.join(gameid)
