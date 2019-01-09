@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T13:57:37-05:00
+ * @Last modified time: 2019-01-09T14:11:55-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -56,7 +56,7 @@ const onSignOutFail = () => {
 
 const onChangePasswordSuccess = response => {
   $('#ChangepasswordModalLongTitle').html('Change Password')
-  $('#content').html('Change Password Success')
+  help.tooltipChange('Change Password Success')
   $('#ModalChangePassword').modal('hide')
   help.ResetForm()
 }
