@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:57:56-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T11:30:46-05:00
+ * @Last modified time: 2019-01-09T12:08:18-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -12,6 +12,7 @@ const onSignInSuccess = response => {
   $('#User-form2').modal('hide')
   store.user2 = response.user
   store.user2.score = 0
+  store.user1.score = 0
   $('#player2-header').html(`<h3>Player 2: ${store.user2.email}</h3>`)
   $('#user2-score').text(`${store.user2.score}`)
   help.User2SignInSuccess()
@@ -24,7 +25,9 @@ const onSignInFail = () => {
 
 const onSignOutSuccess = response => {
   help.User2SignOut()
-  store.user2 = null
+  store.user2 = {
+    score: 0
+  }
   $('#player2-header').html('')
   $('#user2-score').text('0')
   $('#user1-score').text('0')
