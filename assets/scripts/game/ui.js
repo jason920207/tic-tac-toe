@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T11:12:10-05:00
+ * @Last modified time: 2019-01-09T11:34:27-05:00
  */
 
 const Gameevents = require('./events')
@@ -122,8 +122,6 @@ const onShowGameFail = () => {
 
 const onUpdateSuccess = response => {
   store.game = response.game
-  console.log(response)
-  console.log('update success')
   const symbol = store.symbol
 
   if (symbol === 'x') {
@@ -244,10 +242,10 @@ const OnResetStatus = () => {
   $('#user2-id').html('')
   $('#user2-email').html('')
   $('#status-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
-  $('#user1-id').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
-  $('#user1-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
-  $('#user2-id').append('<a><i class="fas fa-user-ninja"></i>Player2</a>')
-  $('#user2-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#user1-id').append('<a><i class="fas fa-user-secret"></i>Player1(ID)</a>')
+  $('#user1-email').append('<a><i class="fas fa-user-secret"></i>Player1(Email)</a>')
+  $('#user2-id').append('<a><i class="fas fa-user-ninja"></i>Player2(ID)</a>')
+  $('#user2-email').append('<a><i class="fas fa-user-secret"></i>Player2(Email)</a>')
 }
 
 const Onshowgamereset = () => {
@@ -257,10 +255,10 @@ const Onshowgamereset = () => {
   $('#showgameuser2-id').html('')
   $('#showgameuser2-email').html('')
   $('#showgame-content1').append('<a><i class="fas fa-gamepad"></i> Game ID</a>')
-  $('#showgameuser1-id').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
-  $('#showgameuser1-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
-  $('#showgameuser2-id').append('<a><i class="fas fa-user-ninja"></i>Player2</a>')
-  $('#showgameuser2-email').append('<a><i class="fas fa-user-secret"></i>Player1</a>')
+  $('#showgameuser1-id').append('<a><i class="fas fa-user-secret"></i>Player1(ID)</a>')
+  $('#showgameuser1-email').append('<a><i class="fas fa-user-secret"></i>Player1(Email)</a>')
+  $('#showgameuser2-id').append('<a><i class="fas fa-user-ninja"></i>Player2(ID)</a>')
+  $('#showgameuser2-email').append('<a><i class="fas fa-user-secret"></i>Player2(Email)</a>')
 }
 
 const showgame = (game) => {
@@ -305,6 +303,8 @@ const getunovergamesuccess = response => {
   })
   help.tooltipChange('Get not over game success')
 }
+
+
 
 module.exports = {
   onGetGameSuccess,

@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:35-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-07T21:46:07-05:00
+ * @Last modified time: 2019-01-09T11:48:41-05:00
  */
 const api = require('./api')
 const ui = require('./ui')
@@ -11,6 +11,7 @@ const help = require('../help')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const onGetGame = event => {
+  help.ResetTitle()
   event.preventDefault()
   api.getgame()
     .then(ui.onGetGameSuccess)
@@ -18,13 +19,14 @@ const onGetGame = event => {
 }
 
 const onShowUnoverGame = event => {
+  help.ResetTitle()
   api.getunovergame()
     .then(ui.getunovergamesuccess)
     .catch(ui.onGetGameFail)
 }
 
-
 const onCreateGame = event => {
+  help.ResetTitle()
   event.preventDefault()
   api.creategame()
     .then(ui.onCreateGameSuccess)
@@ -32,12 +34,14 @@ const onCreateGame = event => {
 }
 
 const onResetGame = () => {
+  help.ResetTitle()
   api.creategame()
     .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFail)
 }
 
 const onShowGame = event => {
+  help.ResetTitle()
   event.preventDefault()
   const data = getFormFields(event.target)
 
@@ -47,7 +51,6 @@ const onShowGame = event => {
 }
 
 const onUpdate = event => {
-  console.log("update",store.game.id)
   const Userid = store.game.id
   const index = event.target.id
   const symbol = store.symbol

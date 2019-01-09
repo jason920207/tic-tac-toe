@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T09:18:51-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T10:25:41-05:00
+ * @Last modified time: 2019-01-09T11:54:15-05:00
  */
 
 'use strict'
@@ -17,6 +17,7 @@ const Gameevents = require('./game/events')
 const User2events = require('./user2/events')
 const Control = require('./control/control')
 const gameui = require('./game/ui')
+const help = require('./help')
 
 $(() => {
   // your JS code goes here
@@ -38,4 +39,15 @@ $(() => {
   $('#Join').on('click', User2events.onJoin)
   $('#clearshowgame').on('click',gameui.Onshowgamereset)
 
+  //reset title
+  $('#SignUpButton').on('click', function () {
+    help.ResetTitle()
+  })
+  $('#SignInButton').on('click', function () {
+    help.ResetTitle()
+  })
+
+  $('#SignInButton2').on('click', function () {
+    help.ResetTitle()
+  })
 })

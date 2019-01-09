@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T08:51:48-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T08:40:59-05:00
+ * @Last modified time: 2019-01-09T11:47:51-05:00
  */
 // hide sign up/ sign in botton when sign in
 const onSignIn = () => {
@@ -69,6 +69,12 @@ const ResetForm = () => {
   $('input').val('')
 }
 
+const ResetTitle = () => {
+  $('#ChangepasswordModalLongTitle').html('Change Password')
+  $('#signinModalLongTitle').html('Sign In')
+  $('#checkUser2info').html('Sign In')
+}
+
 module.exports = {
   onSignIn,
   onSignOut,
@@ -78,5 +84,6 @@ module.exports = {
   ClickSuccess,
   User2JoinInSuccess,
   tooltipChange,
-  ResetForm
+  ResetForm,
+  ResetTitle
 }

@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:57:56-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T10:19:03-05:00
+ * @Last modified time: 2019-01-09T11:30:46-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -40,7 +40,7 @@ const onJoinSuccess = response => {
 }
 
 const onJoinFail = response => {
-  help.tooltipChange('User2 Join Fail')
+  $('#signinModalLongTitle').html('<a class="btn btn-danger">Please Check Your Email and Password</a>')
   help.ResetForm()
 }
 
