@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T08:38:45-05:00
+ * @Last modified time: 2019-01-09T09:36:57-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -12,8 +12,9 @@ const onSignUpSuccess = response => {
   $('#exampleModalLong').modal('hide')
 }
 
-const onSignUpFail = err => {
-  console.log(err)
+const onSignUpFail = () => {
+  $('#signupModalLongTitle').html('<a class="btn btn-danger">Please Check Your Email and Password</a>')
+
 }
 
 const onSignInSuccess = response => {
@@ -35,8 +36,8 @@ const onSignInSuccess = response => {
   // $('#User1-Info').html(UserInfo)
 }
 
-const onSignInFail = err => {
-  console.log(err)
+const onSignInFail = () => {
+  $('#signinModalLongTitle').html('<a class="btn btn-danger">Please Check Your Email and Password</a>')
 }
 
 const onSignOutSuccess = response => {
