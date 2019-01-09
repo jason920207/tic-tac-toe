@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-03T20:12:37-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T10:15:34-05:00
+ * @Last modified time: 2019-01-09T14:11:55-05:00
  */
 const store = require('../store')
 const help = require('../help')
@@ -49,13 +49,14 @@ const onSignOutSuccess = response => {
   help.onSignOut()
 }
 
-const onSignOutFail = err => {
-  console.log(err)
+const onSignOutFail = () => {
+  help.tooltipChange('Sign out wrong')
+
 }
 
 const onChangePasswordSuccess = response => {
   $('#ChangepasswordModalLongTitle').html('Change Password')
-  $('#content').html('Change Password Success')
+  help.tooltipChange('Change Password Success')
   $('#ModalChangePassword').modal('hide')
   help.ResetForm()
 }

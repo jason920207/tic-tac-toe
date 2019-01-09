@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:35-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T11:48:41-05:00
+ * @Last modified time: 2019-01-09T13:56:16-05:00
  */
 const api = require('./api')
 const ui = require('./ui')
@@ -68,7 +68,6 @@ const onUpdate = event => {
     if ($(`#${index}`).html() === '') {
       help.ClickSuccess()
       store.Cells[`${index}`] = symbol
-      console.log(store.Cells)
       ui.Win()
       api.update(Userid, index, symbol, store.isover)
         .then(ui.onUpdateSuccess)
