@@ -2,7 +2,7 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T12:08:39-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T10:09:04-05:00
+ * @Last modified time: 2019-01-09T11:12:10-05:00
  */
 
 const Gameevents = require('./events')
@@ -30,15 +30,14 @@ const onCreateGameSuccess = response => {
   store.game = response.game
   store.Cells = ['', '', '', '', '', '', '', '', '']
   $('.square').html('')
-  help.tooltipChange('Create Success')
   $('#box').css('display', 'block')
   $('#result').css('display', 'none')
   $('#x-turn').removeClass('btn-info')
   $('#y-turn').removeClass('btn-success')
-
-  if (store.user2) {
+  if (store.user2.id) {
     user2event.onJoin()
   }
+  help.tooltipChange(`Game Id: ${store.game.id} is running`)
 }
 
 const onCreateGameFail = () => {
@@ -48,7 +47,6 @@ const onCreateGameFail = () => {
 const onShowGameSuccess = response => {
   Onshowgamereset()
   store.game = response.game
-  console.log(response.game)
   OnResetStatus()
   // show the game
   $('#showgameModal').modal('hide')
@@ -146,15 +144,12 @@ const flip = data => {
 }
 
 const onUpdateFail = err => {
-  console.log(err)
   $('#tooltip').removeClass('btn-info')
   $('#tooltip').addClass('btn-danger')
   help.tooltipChange('Please Create Game First')
 }
 
 const Win = () => {
-  const data = store.game
-  console.log(data)
   const cells = store.Cells
   if (XWin(cells) === true) {
     store.user1.score += 1
@@ -162,7 +157,6 @@ const Win = () => {
     $('#result').html("<a class='btn btn-danger w-100 h-100' id='result-content'>X Win</a>")
     $('#user1-score').text(`${store.user1.score}`)
     store.isover = true
-
     return true
   } else if (OWin(cells) === true) {
     store.user2.score += 1
@@ -304,7 +298,6 @@ const showgame = (game) => {
 
 const getunovergamesuccess = response => {
   const games = response.games
-  console.log(games)
   OnResetStatus()
   $('#status-title').text('Game History(unover)')
   games.forEach(function (game) {

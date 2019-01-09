@@ -2,14 +2,13 @@
  * @Author: xiaojiezhang
  * @Date:   2019-01-04T19:57:56-05:00
  * @Last modified by:   xiaojiezhang
- * @Last modified time: 2019-01-09T08:39:03-05:00
+ * @Last modified time: 2019-01-09T10:19:03-05:00
  */
 const store = require('../store')
 const help = require('../help')
 
 const onSignInSuccess = response => {
   help.ResetForm()
-  console.log(response)
   $('#User-form2').modal('hide')
   store.user2 = response.user
   store.user2.score = 0
@@ -20,6 +19,7 @@ const onSignInSuccess = response => {
 
 const onSignInFail = () => {
   help.tooltipChange('User2 Sign in Fail')
+  help.ResetForm()
 }
 
 const onSignOutSuccess = response => {
@@ -36,10 +36,12 @@ const onSignOutFail = () => {
 
 const onJoinSuccess = response => {
   help.User2JoinInSuccess()
+  help.ResetForm()
 }
 
 const onJoinFail = response => {
   help.tooltipChange('User2 Join Fail')
+  help.ResetForm()
 }
 
 module.exports = {
